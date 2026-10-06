@@ -1,0 +1,53 @@
+// The CONTRACT. Every service and every client (in any language) is generated
+// from / checked against this one file. Field *numbers* (= 1, = 2 ...) are what
+// travel on the wire, not the names, which is why renames are safe and why you
+// never reuse a number.
+syntax = "proto3";
+package rides;
+
+message Point { double lat = 1; double lng = 2; }
+
+message Driver {
+  string id = 1;
+  string name = 2;
+  Point  location = 3;
+  double rating = 4;
+  string vehicle = 5;
+  bool   available = 6;
+  int32  trips = 7;
+}
+
+// ---- Drivers service -------------------------------------------------------
+message NearbyRequest  { Point origin = 1; int32 limit = 2; }
+message NearbyResponse { repeated Driver drivers = 1; }
+
+message TrackRequest { string driver_id = 1; }
+message Location {
+  int32  seq = 1;
+  double lat = 2;
+  double lng = 3;
+  int64  ts = 4;
+  double heading = 5;
+  double speed_kmh = 6;
+}
+
+service Drivers {
+  rpc Nearby(NearbyRequest) returns (NearbyResponse);
+  rpc Track(TrackRequest) returns (stream Location);   // server-streaming
+}
+
+// ---- Pricing service -------------------------------------------------------
+message QuoteRequest  { Point origin = 1; Point dest = 2; string product = 3; }
+message QuoteResponse { int64 amount_cents = 1; string currency = 2; double surge = 3; }
+
+service Pricing {
+  rpc Quote(QuoteRequest) returns (QuoteResponse);
+}
+
+// ---- ETA service -----------------------------------------------------------
+message EtaRequest  { Point from = 1; Point to = 2; }
+message EtaResponse { int32 seconds = 1; }
+
+service Eta {
+  rpc Estimate(EtaRequest) returns (EtaResponse);
+}

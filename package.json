@@ -13,7 +13,8 @@
     "lesson3": "node lessons/03-contract-evolution/index.mjs",
     "lesson4": "node lessons/04-ride-request/index.mjs",
     "lesson5": "node lessons/05-streaming/index.mjs",
-    "all": "npm run lesson1 && npm run lesson2 && npm run lesson3 && npm run lesson4 && npm run lesson5"
+    "lesson6": "node lessons/06-idempotency/index.mjs",
+    "all": "npm run lesson1 && npm run lesson2 && npm run lesson3 && npm run lesson4 && npm run lesson5 && npm run lesson6"
   },
   "dependencies": {
     "@faker-js/faker": "^10.6.0",

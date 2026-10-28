@@ -23,6 +23,7 @@ Read them in order. Each folder has a short README (the explanation) and an `ind
 | 4 | [`04-ride-request`](lessons/04-ride-request) | How do they compare in a realistic multi-service request, under load? |
 | 5 | [`05-streaming`](lessons/05-streaming) | What can RPC do that request/response can't? |
 | 6 | [`06-idempotency`](lessons/06-idempotency) | How do you retry a call that charges money without charging twice? |
+| 7 | [`07-production-grpc`](lessons/07-production-grpc) | What does a real gRPC call add: deadlines, status codes, interceptors? |
 
 ## The mental model
 
@@ -69,7 +70,7 @@ Uber has publicly described building its own RPC stack (TChannel, Thrift, then Y
 
 ```
 proto/rides.proto         the gRPC contract (compare with src/rest-routes.mjs, REST's)
-lessons/                  the six lessons: README + index.mjs each
+lessons/                  the seven lessons: README + index.mjs each
 src/
   handlers.mjs            business logic, written once, used by both transports
   seed.mjs                fake but repeatable data (faker)

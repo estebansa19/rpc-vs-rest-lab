@@ -14,6 +14,7 @@
     "lesson4": "node lessons/04-ride-request/index.mjs",
     "lesson5": "node lessons/05-streaming/index.mjs",
     "lesson6": "node lessons/06-idempotency/index.mjs",
+    "lesson7": "node lessons/07-production-grpc/index.mjs",
     "all": "npm run lesson1 && npm run lesson2 && npm run lesson3 && npm run lesson4 && npm run lesson5 && npm run lesson6"
   },
   "dependencies": {
